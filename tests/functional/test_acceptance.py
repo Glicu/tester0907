@@ -1,3 +1,5 @@
+from pytest_bdd import scenario, given, parsers, when
+
 from src import contacts
 
 
@@ -41,3 +43,21 @@ class TestAddingEntries:
         app._clear()
         app.load()
         assert app._contacts == [("Yennefer z Wanderbergu", "+48987654321")]
+
+    @given("mam książkę adresową", target_fixture="contactbook")
+    def contactbook(self):
+        return contacts.Application()
+
+
+    @given(parsers.parse("Mam wpis dotyczący użytkownika \"{contactname}\""))
+    def have_a_contact(self, contactbook, contactname):
+        contactbook.add(contactname, "123456789")
+
+    @when(parsers.parse("Po wydaniu polecenia \"{command}\""))
+    def runcommand(self, contactbook, command):
+        contactbook.run(command)
+
+    @scenario(r"C:\Users\Glicu\PycharmProjects\tester0907\tests\acceptance\delete_contact.feature",
+              "Usunięcie wpisu z książki adresowej")
+    def test_deleting(self):
+        pass
