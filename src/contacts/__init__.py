@@ -1,7 +1,6 @@
 import re
 import json
 
-
 class Application:
     PHONE_EXPR = re.compile('^[+]?[0-9]{3,}$')
 
