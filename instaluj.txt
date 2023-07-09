@@ -7,7 +7,7 @@ parse-type==0.6.2
 parse==1.19.1
 pip==23.1.2
 pluggy==1.2.0
-pytest-bdd==6.1.1
+pytest-bdd==3.4.0
 pytest==7.4.0
 setuptools==68.0.0
 six==1.16.0
